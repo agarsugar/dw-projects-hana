@@ -8,6 +8,5 @@ function getData(event){
     let subject = subjectChoose.options[subjectChoose.selectedIndex].text
     let messages = document.getElementById("messages").value
 
-    console.log(`Your name is ${name}, your email is ${email},
-        your phone number is ${phone}, you chose ${subject}, and your messages is ${messages} `);
+    console.log(`Your name is ${name}, your email is ${email}, your phone number is ${phone}, you chose ${subject}, and your messages is ${messages} `);
 }
