@@ -58,16 +58,15 @@ function getDurationDetail(startDate, endDate) {
 }
 
 function renderProjects() {
-    let container = document.querySelector(".list-project");
-    let contentHTML = "";
 
-    for (let i = 0; i < projects.length; i++) {
-        contentHTML += `
-            <div class="card m-3 project-card">
+    document.getElementById("cardProjects").innerHTML=''
+    for(let i=0; i < projects.length; i++){
+        document.getElementById("cardProjects").innerHTML += 
+        `<div class="card m-3 project-card">
                 ${projects[i].image
                     ? `<img src = "${projects[i].image}" class="project-img" alt="Project Image">`
                     : `<div class="project-img">
-                        <i class="fa-solid fa-image" style=style="font-size: 48px; color: gray;"></i>
+                        <i class="fa-solid fa-image" style="font-size: 48px; color: gray;"></i>
                     </div>`
                 }
                 <div class="card-body">
@@ -98,5 +97,4 @@ function renderProjects() {
         `;
     }
 
-    container.innerHTML = contentHTML;
 }

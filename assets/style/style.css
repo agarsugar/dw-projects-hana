@@ -318,7 +318,7 @@ body {
 }
 
 .checkbox-row{
-    color: rgb(67, 65, 65);
+    color: rgb(49, 49, 49);
 }
 
 .btn-submit-project{
@@ -328,6 +328,7 @@ body {
     margin-right: auto;
     margin-top: 30px;
     margin-bottom: 50px;
+    transition-duration: 0.4;
 }
  
 .btn-submit-project input{
