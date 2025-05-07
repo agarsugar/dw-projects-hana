@@ -10,3 +10,4 @@ function getData(event){
 
     console.log(`Your name is ${name}, your email is ${email}, your phone number is ${phone}, you chose ${subject}, and your messages is ${messages} `);
 }
+

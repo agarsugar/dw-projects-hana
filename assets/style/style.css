@@ -16,7 +16,7 @@ body {
 
 .container-nav{
     gap: 30px;
-    height: 35px;
+    height: 50px;
 }
 
 .nav-link{
@@ -24,7 +24,7 @@ body {
 }
 
 .nav-link a{
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 500;
     transition: ease 0.4s;
 }
@@ -38,7 +38,7 @@ body {
 }
 
 .btn-contact-me{
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 500;
     margin-right: 50px;
     padding: 4px 15px;
@@ -290,4 +290,133 @@ body {
     padding-right: 30px;
     font-weight: 600;
     font-size: 18px;
+}
+
+/* For My Project Page */
+.title-content-project{
+    text-align: center;
+    margin-top: 80px;
+    font-size: 30px;
+    font-weight: 800;
+}
+.page-add-project{
+    width: 100%;
+    height: auto;
+    margin:  auto;
+    padding: 20px;
+}
+.form-container{
+    max-width: 700px;
+    margin: 30px auto;
+    padding: 0 30px;
+    
+}
+
+.form-container label{
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.checkbox-row{
+    color: rgb(67, 65, 65);
+}
+
+.btn-submit-project{
+    display: flex;
+    justify-content: flex-end;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+ 
+.btn-submit-project input{
+     border-radius: 20px;
+     padding-left: 30px;
+     padding-right: 30px;
+     font-weight: 600;
+     font-size: 18px;
+}
+
+.project-list-section{
+    text-align: center;
+    margin-top: 20px;
+    padding: 100px;
+    background-color: #f0f0f0;
+}
+
+.project-list-section h1{
+    font-size: 30px;
+    font-weight: 800;
+    margin-bottom: 50px;
+}
+
+.container-cards{
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+}
+
+.list-project{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    gap: 20px;
+}
+
+.project-card{
+    display: flex;
+    flex: 1 1 calc(33.333% -20px);
+    width: 350px;
+    max-height: 800px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 10px 9px rgba(0, 0, 0, 0.1);
+}
+
+.project-img{
+    height: 200px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    background-color: #f0f0f0;
+    border-radius: 8px;
+}
+
+.card-body{
+    text-align: left;
+    font-size: 16px;
+    padding: 4px;
+}
+
+.card-title{
+    font-weight: 600;
+}
+
+.project-duration{
+    color: #9c9c9c;
+}
+
+.tech-icons{
+    display: flex;
+    height: 30px;
+    font-size: 30px;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.button-update{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: auto;
+}
+
+.button-update button{
+    flex: 1;
+    min-width: 150px;
+    background-color: #333333;
+    color: white;
+    border-radius: 4px;
 }
