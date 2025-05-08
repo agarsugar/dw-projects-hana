@@ -7,7 +7,7 @@ function getData(e) {
     let startDate = document.getElementById("startdate").value;
     let endDate = document.getElementById("enddate").value;
     let description = document.getElementById("project-desc").value;
-    let imageInput = document.getElementById("inputGroupFile01");
+    let imageInput = document.getElementById("input-img");
     let image = imageInput.files.length > 0 ? URL.createObjectURL(imageInput.files[0]) : "";
 
     let techs = [];
