@@ -95,11 +95,11 @@ function renderProjects() {
                             if (tech === "NodeJs") {
                                 return `<i class="fa-brands fa-node-js"></i>`
                             } else if (tech === "NextJs") {
-                                return `<img src="https://img.icons8.com/?size=100&id=yUdJlcKanVbh&format=png&color=000000" alt="NextJs" >`
+                                return `<img src="https://img.icons8.com/?size=100&id=yUdJlcKanVbh&format=png&color=000000">`
                             } else if (tech === "ReactJs") {
                                 return `<i class="fa-brands fa-react"></i>`
                             } else if (tech === "TypeScript") {
-                                return `<img src="https://img.icons8.com/?size=100&id=vMqgHSToxrJR&format=png&color=000000" alt="TypeScript">`
+                                return `<img src="https://img.icons8.com/?size=100&id=vMqgHSToxrJR&format=png&color=000000">`
                             } else {
                                 return ""
                             }
