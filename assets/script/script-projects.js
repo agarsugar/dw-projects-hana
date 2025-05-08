@@ -1,20 +1,28 @@
 let projects = [];
 
 function getData(e) {
-    e.preventDefault();
+    e.preventDefault()
 
-    let name = document.getElementById("project-name").value;
-    let startDate = document.getElementById("startdate").value;
-    let endDate = document.getElementById("enddate").value;
-    let description = document.getElementById("project-desc").value;
-    let imageInput = document.getElementById("input-img");
-    let image = imageInput.files.length > 0 ? URL.createObjectURL(imageInput.files[0]) : "";
+    let name = document.getElementById("project-name").value
+    let startDate = document.getElementById("startdate").value
+    let endDate = document.getElementById("enddate").value
+    let description = document.getElementById("project-desc").value
+    let imageInput = document.getElementById("input-img")
+    let image = imageInput.files.length > 0 ? URL.createObjectURL(imageInput.files[0]) : ""
 
-    let techs = [];
-    if (document.getElementById("nodejs-check").checked) techs.push("NodeJs");
-    if (document.getElementById("nextjs-check").checked) techs.push("NextJs");
-    if (document.getElementById("reactjs-check").checked) techs.push("ReactJs");
-    if (document.getElementById("typescript-js").checked) techs.push("TypeScript");
+    let techs = []
+    if (document.getElementById("nodejs-check").checked) {
+        techs.push("NodeJs")
+    }
+    if (document.getElementById("nextjs-check").checked) {
+        techs.push("NextJs")
+    } 
+    if (document.getElementById("reactjs-check").checked) {
+        techs.push("ReactJs")
+    } 
+    if (document.getElementById("typescript-js").checked) {
+        techs.push("TypeScript")
+    } 
 
     let project = {
         name,
@@ -23,38 +31,48 @@ function getData(e) {
         description,
         techs,
         image
-    };
+    }
 
-    projects.push(project);
+    projects.push(project)
 
-    renderProjects();
+    renderProjects()
 }
 
 function getDurationDetail(startDate, endDate) {
-    let start = new Date(startDate);
-    let end = new Date(endDate);
+        let start = new Date(startDate)
+        let end = new Date(endDate)
+    
+        let years = end.getFullYear() - start.getFullYear()
+        let months = end.getMonth() - start.getMonth()
+        let days = end.getDate() - start.getDate()
+    
+        if (days < 0) {
+            months--
+            days += 30
+        }
+    
+        if (months < 0) {
+            years--
+            months += 12
+        }
+    
+        if (years < 0) {
+            years = 0
+        }
+    
+        let result = ""
+        if (years > 0) {
+            result += `${years} tahun `
+        }
+        if (months > 0) {
+            result += `${months} bulan `
+        }
+        if (days > 0) {
+            result += `${days} hari `
+        }
 
-    let diffTime = end - start;
-    let diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)); // Convert miliseconds to days
-
-    let years = Math.floor(diffDays / 365);
-    let remainingDaysAfterYears = diffDays % 365;
-    let months = Math.floor(remainingDaysAfterYears / 30);
-    let days = remainingDaysAfterYears % 30;
-
-    let result = "";
-
-    if (years > 0) {
-        result += `${years} tahun `;
-    }
-    if (months > 0) {
-        result += `${months} bulan `;
-    }
-    if (days > 0) {
-        result += `${days} hari `;
-    }
-
-    return result.trim();
+        return result.trim()
+    
 }
 
 function renderProjects() {
@@ -76,15 +94,15 @@ function renderProjects() {
                     <div class="tech-icons">
                         ${projects[i].techs.map(tech => {
                             if (tech === "NodeJs") {
-                                return `<i class="fa-brands fa-node-js"></i>`;
+                                return `<i class="fa-brands fa-node-js"></i>`
                             } else if (tech === "NextJs") {
-                                return `<img src="https://img.icons8.com/?size=100&id=yUdJlcKanVbh&format=png&color=000000" alt="NextJs" >`;
+                                return `<img src="https://img.icons8.com/?size=100&id=yUdJlcKanVbh&format=png&color=000000" alt="NextJs" >`
                             } else if (tech === "ReactJs") {
-                                return `<i class="fa-brands fa-react"></i>`;
+                                return `<i class="fa-brands fa-react"></i>`
                             } else if (tech === "TypeScript") {
-                                return `<img src="https://img.icons8.com/?size=100&id=vMqgHSToxrJR&format=png&color=000000" alt="TypeScript">`;
+                                return `<img src="https://img.icons8.com/?size=100&id=vMqgHSToxrJR&format=png&color=000000" alt="TypeScript">`
                             } else {
-                                return "";
+                                return ""
                             }
                         }).join(" ")}
                     </div>
@@ -94,7 +112,7 @@ function renderProjects() {
                     </div>
                 </div>
             </div>
-        `;
+        `
     }
 
 }
