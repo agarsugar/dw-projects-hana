@@ -33,6 +33,17 @@ function getData(e) {
         image
     }
 
+    if (name === ""){
+      return alert("Silahkan mengisi nama terlebih dahulu!")
+    }
+    if (startDate === ""){
+        return alert("Silahkan mengisi tanggal awal proyek terlebih dahulu!")
+    }
+    if (endDate === ""){
+        return alert("Silahkan mengisi tanggal akhir proyek terlebih dahulu!")
+    }
+
+
     projects.push(project)
 
     renderProjects()
@@ -41,35 +52,71 @@ function getData(e) {
 function getDurationDetail(startDate, endDate) {
     let start = new Date(startDate)
     let end = new Date(endDate)
-    
-    let years = end.getFullYear() - start.getFullYear()
+
+    let years = end.getFullYear - start.getFullYear()
     let months = end.getMonth() - start.getMonth()
     let days = end.getDate() - start.getDate()
-    
+
+    // Menghitung jumlah hari (dengan tanggal aktual)
     if (days < 0) {
+        // Pengurangan 1 bulan karena "hari" negatif
         months--
-        days += 30
+        // Menghitung jumlah hari pada bulan sebelumnya
+        let prevmonth = new Date(end.getFullYear(), end.getMonth(), 0) //Mendapatkan tanggal terakhir/jumlah hari bulan sebelumnya
+        days += prevmonth.getDate() // menambahkan jumlah hari dari bulan sebelumnya ke "hari" tujuan
     }
     
+    // Menghitung jumlah bulan
     if (months < 0) {
+        // Pengurangan 1 tahun karena "tahun" negatif
         years--
-        months += 12
+        months += 12 //menambahkan jumlah bulan dalam satu tahun ke "bulan" tujuan
     }
     
+    // Menghitung jumlah tahun
     if (years < 0) {
-        years = 0
+        years = 0 //mendeklarasikan default tahun sama dengan nol
     }
     
     let result = ""
     if (years > 0) {
         result += `${years} tahun `
-    }
-    if (months > 0) {
+    } 
+    if (months > 0){
         result += `${months} bulan `
     }
-    if (days > 0) {
+    if(days > 0){
         result += `${days} hari `
     }
+
+    // let years = end.getFullYear() - start.getFullYear()
+    // let months = end.getMonth() - start.getMonth()
+    // let days = end.getDate() - start.getDate()
+    
+    // if (days < 0) {
+    //     months--
+    //     days += 30
+    // }
+    
+    // if (months < 0) {
+    //     years--
+    //     months += 12
+    // }
+    
+    // if (years < 0) {
+    //     years = 0
+    // }
+    
+    // let result = ""
+    // if (years > 0) {
+    //     result += `${years} tahun `
+    // }
+    // if (months > 0) {
+    //     result += `${months} bulan `
+    // }
+    // if (days > 0) {
+    //     result += `${days} hari `
+    // }
 
     return result.trim()
 }
