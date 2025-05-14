@@ -123,22 +123,59 @@ function getDurationDetail(startDate, endDate) {
 
 function renderProjects() {
 
-    document.getElementById("cardProjects").innerHTML=''
-    for(let i=0; i < projects.length; i++){
-        document.getElementById("cardProjects").innerHTML += 
-        `<div class="card m-3 project-card">
-                ${projects[i].image
-                    ? `<img src = "${projects[i].image}" class="project-img" alt="Project Image">`
+    // document.getElementById("cardProjects").innerHTML=''
+    // for(let i=0; i < projects.length; i++){
+    //     document.getElementById("cardProjects").innerHTML += 
+    //     `<div class="card m-3 project-card">
+    //             ${projects[i].image
+    //                 ? `<img src = "${projects[i].image}" class="project-img" alt="Project Image">`
+    //                 : `<div class="project-img">
+    //                     <i class="fa-solid fa-image" style="font-size: 48px; color: gray;"></i>
+    //                 </div>`
+    //             }
+    //             <div class="card-body">
+    //                 <h5 class="card-title">${projects[i].name}</h5>
+    //                 <p class="project-duration">durasi: ${getDurationDetail(projects[i].startDate, projects[i].endDate)}</p>
+    //                 <p class="card-text">${projects[i].description}</p>
+    //                 <div class="tech-icons">
+    //                     ${projects[i].techs.map(tech => {
+    //                         if (tech === "NodeJs") {
+    //                             return `<i class="fa-brands fa-node-js"></i>`
+    //                         } else if (tech === "NextJs") {
+    //                             return `<img src="https://img.icons8.com/?size=100&id=yUdJlcKanVbh&format=png&color=000000">`
+    //                         } else if (tech === "ReactJs") {
+    //                             return `<i class="fa-brands fa-react"></i>`
+    //                         } else if (tech === "TypeScript") {
+    //                             return `<img src="https://img.icons8.com/?size=100&id=vMqgHSToxrJR&format=png&color=000000">`
+    //                         } else {
+    //                             return ""
+    //                         }
+    //                     }).join(" ")}
+    //                 </div>
+    //                 <div class="button-update">
+    //                     <button type="button" class="btn btn-dark">Edit</button>
+    //                     <button type="button" class="btn btn-dark">Delete</button>
+    //                 </div>
+    //             </div>
+    //         </div>
+    //     `
+    // }
+
+    const cardContainer = document.getElementById("cardProjects")
+    cardContainer.innerHTML = projects.map((project) => {
+        return `<div class="card m-3 project-card">
+                ${project.image
+                    ? `<img src = "${project.image}" class="project-img" alt="Project Image">`
                     : `<div class="project-img">
                         <i class="fa-solid fa-image" style="font-size: 48px; color: gray;"></i>
                     </div>`
                 }
                 <div class="card-body">
-                    <h5 class="card-title">${projects[i].name}</h5>
-                    <p class="project-duration">durasi: ${getDurationDetail(projects[i].startDate, projects[i].endDate)}</p>
-                    <p class="card-text">${projects[i].description}</p>
+                    <h5 class="card-title">${project.name}</h5>
+                    <p class="project-duration">durasi: ${getDurationDetail(project.startDate, project.endDate)}</p>
+                    <p class="card-text">${project.description}</p>
                     <div class="tech-icons">
-                        ${projects[i].techs.map(tech => {
+                        ${project.techs.map(tech => {
                             if (tech === "NodeJs") {
                                 return `<i class="fa-brands fa-node-js"></i>`
                             } else if (tech === "NextJs") {
@@ -159,6 +196,5 @@ function renderProjects() {
                 </div>
             </div>
         `
-    }
-
+    }).join("")
 }
