@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/style/style.css">
+    <link rel="icon" type="image/x-icon" href="../assets/images/icon.png">
+    <title>My Projects</title>
+</head>
+
+<body>
+    {{!-- <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid container-nav">
+            <div class="logo">
+                <i class="fa-solid fa-star"></i>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav-link">
+                    <li class="nav-item">
+                        <a class="nav-link" href="home.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="my-projects.html">My Project</a>
+                    </li>
+                </ul>
+                <a class="btn btn-dark btn-contact-me" href="contact-me.html" role="button">Contact Me</a>
+            </div>
+        </div>
+    </nav> --}}
+
+    {{> navbar }}
+
+    <div class="page-add-project">
+        <h1 class="title-content-project">ADD MY PROJECT</h1>
+        <form action="/projects" method="post">
+            <div class="container form-container">
+                <div class="mb-3 project-name-input">
+                    <label for="project-name" class="form-label">Project Name</label>
+                    <input type="text" class="form-control" id="project-name" name="projectName">
+                </div>
+                <div class="mb-3 row date-input">
+                    <div class="col">
+                        <label for="startdate">Start Date</label>
+                        <input type="date" class="form-control" id="startdate" name="startDate">
+                    </div>
+                    <div class="col">
+                        <label for="enddate">End Date</label>
+                        <input type="date" class="form-control" id="enddate" name="endDate">
+                    </div>
+                </div>
+
+                <div class="mb-3 project-desc-input">
+                    <label for="project-desc" class="form-label">Description</label>
+                    <textarea class="form-control" id="project-desc" rows="5" name="projectDesc"></textarea>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Technologies</label>
+                    <div class="row checkbox-row">
+                        <div class="col-5">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="NodeJs" id="nodejs-check"
+                                    name="techs">
+                                <label class="form-check-label" for="nodejs-check">
+                                    Node Js
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="NextJs" id="nextjs-check"
+                                    name="techs">
+                                <label class="form-check-label" for="nextjs-check">
+                                    Next Js
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-5 mt-2">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="ReactJs" id="reactjs-check"
+                                    name="techs">
+                                <label class="form-check-label" for="reactjs-check">
+                                    React Js
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-4 mt-2">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="TypeScript" id="typescript-js"
+                                    name="techs">
+                                <label class="form-check-label" for="typescript-js">
+                                    TypeScript
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="input-img" class="form-label">Upload Image</label>
+                        <input class="form-control" type="file" id="input-img" name="image">
+                    </div>
+                    <div class="btn-submit-project">
+                        <input class="btn btn-dark" type="submit" value="submit" onclick="getData(event)">
+                    </div>
+        </form>
+
+    </div>
+
+    <div class="project-list-section">
+        <h1>MY PROJECT</h1>
+        <div class="container-cards">
+            <div class="list-project" id="cardProjects" onclick="window.location.href='/projects-detail/{{this.id}}'"
+                style="cursor: pointer;">
+                {{#each projects}}
+                <div class="card m-3 project-card">
+                    {{#if image}}
+                    <img src="{{image}}" class="project-img" alt="Project Image">
+                    {{else}}
+                    <div class="project-img">
+                        <i class="fa-solid fa-image" style="font-size: 48px; color: gray;"></i>
+                    </div>
+                    {{/if}}
+
+                    <div class="card-body">
+                        <h5 class="card-title">{{project_name}}</h5>
+                        <p class="card-text">{{project_desc}}</p>
+
+                        <div class="tech-icons">
+                            {{#each techs}}
+                            {{#if (eq this "NodeJs")}}<i class="fa-brands fa-node-js"></i>{{/if}}
+                            {{#if (eq this "ReactJs")}}<i class="fa-brands fa-react"></i>{{/if}}
+                            {{#if (eq this "NextJs")}}<img
+                                src="https://img.icons8.com/?size=100&id=yUdJlcKanVbh&format=png&color=000000">{{/if}}
+                            {{#if (eq this "TypeScript")}}<img
+                                src="https://img.icons8.com/?size=100&id=vMqgHSToxrJR&format=png&color=000000">{{/if}}
+                            {{/each}}
+                        </div>
+                        <div class="button-update">
+                            <!-- Edit button - should be a link since it's a GET request -->
+                            <a href="/edit-project/{{id}}" class="btn btn-dark">Edit</a>
+                            
+                            <!-- Delete button - proper form with POST method -->
+                            <form action="/delete-project/{{id}}" method="POST" style="display: inline;">
+                                <button type="submit" class="btn btn-dark">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+    {{!-- <script src="assets/script/script-projects.js"></script> --}}
+</body>
+
+</html>
